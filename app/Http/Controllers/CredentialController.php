@@ -34,6 +34,30 @@ class CredentialController extends Controller
         ]);
    }
 
+    public function vista()
+    {
+        $workers = Worker::orderBy('full_name')->get();
+
+        $extracted = [
+            'TipoCredencial' => '',
+            'Nombres' => '',
+            'ApellidoPaterno' => '',
+            'ApellidoMaterno' => '',
+            'EmpresaTrabaja' => '',
+            'Cargo' => '',
+            'Telefono' => '',
+            'Email' => '',
+        ];
+
+
+        return view('credentials.vista', [
+            'workers' => $workers,
+            'selectedWorkerId' => null,
+            'sourceUrl' => null,
+            'extracted' => $extracted,
+        ]);
+   }
+
     public function contacts()
    {
        $contacts = Credential::with('worker')->orderByDesc('id')->paginate(20);
