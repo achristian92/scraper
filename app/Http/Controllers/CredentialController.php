@@ -34,6 +34,12 @@ class CredentialController extends Controller
         ]);
    }
 
+    public function contacts()
+   {
+       $contacts = Credential::with('worker')->orderByDesc('id')->paginate(20);
+
+       return view('credentials.contacts', compact('contacts'));
+   }
     public function extract(Request $request)
     {
         $data = $request->validate([
