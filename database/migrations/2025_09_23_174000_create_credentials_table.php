@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('cargo')->nullable();
             $table->string('telefono')->nullable();
             $table->string('email')->nullable();
+            $table->string('sector')->nullable();
+            $table->string('notas')->nullable();
             $table->json('payload');
 
             $table->timestamps();

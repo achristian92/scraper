@@ -23,6 +23,8 @@ class CredentialController extends Controller
             'Cargo' => '',
             'Telefono' => '',
             'Email' => '',
+            'Sector' => '',
+            'Notas' => '',
         ];
 
 
@@ -47,6 +49,8 @@ class CredentialController extends Controller
             'Cargo' => '',
             'Telefono' => '',
             'Email' => '',
+            'Sector' => '',
+            'Notas' => '',
         ];
 
 
@@ -168,6 +172,8 @@ class CredentialController extends Controller
             'cargo'   => $customer['Cargo'],
             'telefono'   => $customer['Telefono'],
             'email'   => $customer['Email'],
+            'sector' => $customer['Sector'],
+            'notas' => $customer['Notas'],
             'payload'   => $request->payload,
         ]);
 
