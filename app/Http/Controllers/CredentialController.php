@@ -140,7 +140,24 @@ class CredentialController extends Controller
             }
         }
 
-        // pasa todo a la vista para mostrar formulario editable
+        // ===== Asegurar campos adicionales requeridos por el flujo =====
+        // Si no vinieron en el HTML, agrega claves vacías; si vinieron en otra
+        // capitalización (sector/notas), mapea a 'Sector' y 'Notas'.
+        if (!array_key_exists('Sector', $parsed)) {
+            if (array_key_exists('sector', $parsed)) {
+                $parsed['Sector'] = $parsed['sector'];
+            } else {
+                $parsed['Sector'] = '';
+            }
+        }
+        if (!array_key_exists('Notas', $parsed)) {
+            if (array_key_exists('notas', $parsed)) {
+                $parsed['Notas'] = $parsed['notas'];
+            } else {
+                $parsed['Notas'] = '';
+            }
+        }
+
         $workers = Worker::orderBy('full_name')->get();
         return view('credentials.index', [
             'workers' => $workers,
